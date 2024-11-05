@@ -7,9 +7,9 @@ import (
 )
 
 type VpcConstructProps struct {
-	Scppe   constructs.Construct
-	ProjectName    string
-	VpcCidr string
+	Scppe       constructs.Construct
+	ProjectName string
+	VpcCidr     string
 }
 
 func VpcConstruct(props VpcConstructProps) *ec2.Vpc {
@@ -21,18 +21,18 @@ func VpcConstruct(props VpcConstructProps) *ec2.Vpc {
 		MaxAzs:                       jsii.Number(2),
 		NatGateways:                  jsii.Number(1),
 		RestrictDefaultSecurityGroup: jsii.Bool(true),
-                SubnetConfiguration: &[]*ec2.SubnetConfiguration{
-                        {
-                                Name: jsii.String("Public"),
-                                SubnetType: ec2.SubnetType_PUBLIC,
-                                CidrMask: jsii.Number(24),
-                        },
-                        {
-                                Name: jsii.String(("Private")),
-                                SubnetType: ec2.SubnetType_PRIVATE_WITH_NAT,
-                                CidrMask: jsii.Number(24),
-                        },
-                },
+		SubnetConfiguration: &[]*ec2.SubnetConfiguration{
+			{
+				Name:       jsii.String("Public"),
+				SubnetType: ec2.SubnetType_PUBLIC,
+				CidrMask:   jsii.Number(24),
+			},
+			{
+				Name:       jsii.String(("Private")),
+				SubnetType: ec2.SubnetType_PRIVATE_WITH_NAT,
+				CidrMask:   jsii.Number(24),
+			},
+		},
 	})
 
 	return &vpc

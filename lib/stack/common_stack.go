@@ -9,20 +9,20 @@ import (
 
 type CommonStackProps struct {
 	awscdk.StackProps
-  ProjectName string
-  Env string
+	ProjectName string
+	Env         string
 }
 
-func CommonStackConstruct(scope constructs.Construct, id string, props *CommonStackProps ) {
-  var sprops awscdk.StackProps
-  if props != nil {
-    sprops = props.StackProps
-  }
-  stack := awscdk.NewStack(scope, &id, &sprops)
+func CommonStackConstruct(scope constructs.Construct, id string, props *CommonStackProps) {
+	var sprops awscdk.StackProps
+	if props != nil {
+		sprops = props.StackProps
+	}
+	stack := awscdk.NewStack(scope, &id, &sprops)
 
-  resource.VpcConstruct(resource.VpcConstructProps{
-    Scppe: stack,
-    ProjectName: props.ProjectName + props.Env,
-    VpcCidr: "192.168.0.0/24",
-  })
+	resource.VpcConstruct(resource.VpcConstructProps{
+		Scppe:       stack,
+		ProjectName: props.ProjectName + props.Env,
+		VpcCidr:     "192.168.0.0/24",
+	})
 }

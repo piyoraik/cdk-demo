@@ -16,7 +16,7 @@ func main() {
 
 	stacks.CommonStackConstruct(app, "CommonStack", &stacks.CommonStackProps{
 		ProjectName: projectName,
-		Env: env,
+		Env:         env,
 	})
 
 	app.Synth(nil)
